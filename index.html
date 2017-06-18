@@ -1,0 +1,238 @@
+<html>
+<head>
+	<title>Edmunds Demo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="assets/css/style.css"/>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<h2>Edmunds Demo</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="make" class="control-label">Make</label>
+					<select class="form-control" name="make" id="make">
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="model" class="control-label">Model</label>
+					<select class="form-control" name="model" id="model">
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="year" class="control-label">Year</label>
+					<select class="form-control" name="year" id="year"></select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="style" class="control-label">Style</label>
+					<select class="form-control" name="style" id="style"></select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="status" class="control-label">Status</label>
+					<select class="form-control" name="status" id="status">
+						<option value="0">Select</option>
+						<option value="new">New</option>
+						<option value="used">Used</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1 col-md-offset-5">
+				<button onclick="fetchVehicles()" class="btn btn-success">Fetch</button>
+			</div>
+		</div>
+		<div class="row" id="car-info-container" style="display: none">
+			<div class="col-md-12">
+				<div class="title center">
+					<h2 id="car-box-title"></h2><br/>
+					<h2>Car Details</h2>
+				</div>
+				<div class="box">
+					<div class="row bottom-padding">
+						<div class="col-md-3" id="photo-container">
+							
+						</div>
+						<div class="col-md-9">
+							<p id="car-name"></p>
+							<p id="msrp-container">
+								MSRP: <span id="msrp"></span>
+							</p>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-2 center price-container" id="new-container">
+								<p class="price-title bottom-padding">New</p>
+								<p class="price-tmv bottom-padding">TMV</p>
+								<div class="tmv-container bottom-padding">
+									TMV: <span class="price-value tmv"></span>
+								</div>
+								<div class="retail-container bottom-padding">
+									Retail: <span class="price-value retail"></span>
+								</div>
+								<div class="private-party-container bottom-padding">
+									Private Party: <span class="price-value private-party"></span>
+								</div>
+								<div class="tradein-container bottom-padding">
+									Tradein: <span class="price-value tradein"></span>
+								</div>
+							</div>
+							<div class="col-md-2 center price-container" id="outstanding-container">
+								<p class="price-title bottom-padding">Outstanding</p>
+								<p class="price-tmv bottom-padding">TMV</p>
+								<div class="tmv-container bottom-padding">
+									TMV: <span class="price-value tmv"></span>
+								</div>
+								<div class="retail-container bottom-padding">
+									Retail: <span class="price-value retail"></span>
+								</div>
+								<div class="private-party-container bottom-padding">
+									Private Party: <span class="price-value private-party"></span>
+								</div>
+								<div class="tradein-container bottom-padding">
+									Tradein: <span class="price-value tradein"></span>
+								</div>
+							</div>
+							<div class="col-md-2 center price-container" id="clean-container">
+								<p class="price-title bottom-padding">Clean</p>
+								<p class="price-tmv bottom-padding">TMV</p>
+								<div class="tmv-container bottom-padding">
+									TMV: <span class="price-value tmv"></span>
+								</div>
+								<div class="retail-container bottom-padding">
+									Retail: <span class="price-value retail"></span>
+								</div>
+								<div class="private-party-container bottom-padding">
+									Private Party: <span class="price-value private-party"></span>
+								</div>
+								<div class="tradein-container bottom-padding">
+									Tradein: <span class="price-value tradein"></span>
+								</div>
+							</div>
+							<div class="col-md-2 center price-container" id="average-container">
+								<p class="price-title bottom-padding">Average</p>
+								<p class="price-tmv bottom-padding">TMV</p>
+								<div class="tmv-container bottom-padding">
+									TMV: <span class="price-value tmv"></span>
+								</div>
+								<div class="retail-container bottom-padding">
+									Retail: <span class="price-value retail"></span>
+								</div>
+								<div class="private-party-container bottom-padding">
+									Private Party: <span class="price-value private-party"></span>
+								</div>
+								<div class="tradein-container bottom-padding">
+									Tradein: <span class="price-value tradein"></span>
+								</div>
+							</div>
+							<div class="col-md-2 center price-container" id="rough-container">
+								<p class="price-title bottom-padding">Rough</p>
+								<p class="price-tmv bottom-padding">TMV</p>
+								<div class="tmv-container bottom-padding">
+									TMV: <span class="price-value tmv"></span>
+								</div>
+								<div class="retail-container bottom-padding">
+									Retail: <span class="price-value retail"></span>
+								</div>
+								<div class="private-party-container bottom-padding">
+									Private Party: <span class="price-value private-party"></span>
+								</div>
+								<div class="tradein-container bottom-padding">
+									Tradein: <span class="price-value tradein"></span>
+								</div>
+							</div>
+							<div class="col-md-2 center price-container" id="damaged-container">
+								<p class="price-title bottom-padding">Damaged</p>
+								<p class="price-tmv bottom-padding">TMV</p>
+								<div class="tmv-container bottom-padding">
+									TMV: <span class="price-value tmv"></span>
+								</div>
+								<div class="retail-container bottom-padding">
+									Retail: <span class="price-value retail"></span>
+								</div>
+								<div class="private-party-container bottom-padding">
+									Private Party: <span class="price-value private-party"></span>
+								</div>
+								<div class="tradein-container bottom-padding">
+									Tradein: <span class="price-value tradein"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="attr-box">
+							<div class="col-md-12">
+								<p class="attr-section-title">Engine and Performance</p>
+								<table class="attr-table">
+									<tr>
+										<td class="attr-title">Size</td>
+										<td class="attr-value" id="size"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Cylinder</td>
+										<td class="attr-value" id="cylinder"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Displacement</td>
+										<td class="attr-value" id="displacement"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Horse Power</td>
+										<td class="attr-value" id="horsepower"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Torque</td>
+										<td class="attr-value" id="torque"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Total Valves</td>
+										<td class="attr-value" id="totalValves"></td>
+									</tr>
+								</table>
+								<p class="attr-section-title">Fuel</p>
+								<table class="attr-table">
+									<tr>
+										<td class="attr-title">Fuel Type</td>
+										<td class="attr-value" id="fuelType"></td>
+									</tr>
+								</table>
+								<p class="attr-section-title">Drivetrain and Transmission</p>
+								<table class="attr-table">
+									<tr>
+										<td class="attr-title">Transmission</td>
+										<td class="attr-value" id="transmission"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Transmission Type</td>
+										<td class="attr-value" id="transmissionType"></td>
+									</tr>
+									<tr>
+										<td class="attr-title">Number Of speeds</td>
+										<td  class="attr-value" id="numberOfSpeeds"></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+</html>

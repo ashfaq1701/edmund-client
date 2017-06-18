@@ -1,0 +1,80 @@
+body {
+    padding-bottom: 50px;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.box
+{
+	border: 1px solid green;
+}
+
+.car-image
+{
+	height: 200px;
+	width: 300px;
+}
+
+.attr-table
+{
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.attr-box
+{
+	padding-left: 20px;
+}
+
+.attr-section-title
+{
+	font-size: 1.3em;
+}
+
+.bottom-padding
+{
+	padding-bottom: 20px;
+}
+
+#car-name
+{
+	font-size: 1.4em;
+}
+
+#msrp-container
+{
+	font-size: 1.4em;
+}
+
+.attr-title
+{
+	width: 30%;
+}
+
+.attr-value
+{
+	width: 70%;
+}
+
+.price-title
+{
+	font-size: 1.4em;
+}
+
+.price-tmv
+{
+	font-size: 1.3em;
+}
+
+.price-container
+{
+	border: 1px solid green;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
